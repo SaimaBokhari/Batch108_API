@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
+import static org.testng.AssertJUnit.*;
 
 public class Review {
 
@@ -57,6 +58,14 @@ public class Review {
 
         Response response = given().when().get(url);
         response.prettyPrint();
+
+        response.then().assertThat().statusCode(404).statusLine("HTTP/1.1 404 Not Found");
+
+        assertTrue(response.asString().contains("Not Found"));
+
+        assertFalse(response.asString().contains("TechPro"));
+
+        assertEquals("Cowboy", response.getHeader("Server"));
 
 
 
