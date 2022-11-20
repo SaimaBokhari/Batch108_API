@@ -95,7 +95,7 @@ public class Get06 extends HerOkuAppBaseUrl {
 
 
         // 2nd. Do assertion
-        softAssert.assertEquals(jsonPath.getString("firstName"), "James", "First name didn't match");
+        softAssert.assertEquals(jsonPath.getString("firstName"), "James", "First name didn't match");  // 3rd parameter is a custom message if test fails
         softAssert.assertEquals(jsonPath.getString("lastName"), "Brown", "Last name didn't match");
         // softAssert.assertEquals(jsonPath.getInt("totalPrice"), 111, "Total price didn't match");
         softAssert.assertEquals(jsonPath.getBoolean("depositpaid"), true, "Deposit is not paid");
