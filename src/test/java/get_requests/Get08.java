@@ -49,7 +49,7 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
 
         // Do assertion
         // to compare the data, both actual and real data should be in the same format
-        // it's called deserialisation
+        // it's called de-serialisation
         // for that we change response (JSON format) into HashMap
 
         Map<String, Object> actualData = response.as(HashMap.class);   // as() method comes from GSon library from google
