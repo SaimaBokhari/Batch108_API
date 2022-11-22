@@ -44,6 +44,13 @@ And: You can use the keyword “Given” one after the other when writing the gi
      You can also use (*) instead of “And”.
 But: Used with negative situations.
 
+A network protocol is an established set of rules that determine how data is transmitted
+between different devices in the same network. Essentially, it allows connected devices
+to communicate with each other, regardless of any differences in their internal
+processes, structure or design.
+HTTP, REST and SOAP are API protocols.
+HTTP -> Hyper Text Transfer Protocol
+
 
         c) Four steps to type Automation Script
                  i) Set the URL

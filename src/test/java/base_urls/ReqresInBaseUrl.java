@@ -4,7 +4,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 
-public class ReqresIn {
+public class ReqresInBaseUrl {
     protected RequestSpecification spec;
 
     @Before // if we use this annotation at the top of any method, it means this method will

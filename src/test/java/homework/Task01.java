@@ -1,6 +1,6 @@
 package homework;
 
-import base_urls.ReqresIn;
+import base_urls.ReqresInBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.*;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class Task01 extends ReqresIn {
+public class Task01 extends ReqresInBaseUrl {
     /*
         Given
             https://reqres.in/api/users/3
