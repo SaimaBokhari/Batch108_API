@@ -66,20 +66,22 @@ public class Get06 extends HerOkuAppBaseUrl {
                         "additionalneeds", equalTo("breakfast"));
 
         // 2nd way: We will use JsonPath Class
-        //       JsonPath jsonPath = response.jsonPath();  // Hard Assertion
+               JsonPath jsonPath = response.jsonPath();  // Hard Assertion
 
-        // JsonPath is used for data manipulation
-        // JsonPath() enables us to extract data from inside the body
-        // Jsonpath class enables us to do Math operations like division in the following example
-        // System.out.println(jsonPath.getInt("totalPrice") / 3);
+         /* JsonPath is used for data manipulation
+         JsonPath() enables us to extract data from inside the body
+         Jsonpath class enables us to do Math operations like division in the following example
+         System.out.println(jsonPath.getInt("totalPrice") / 3);
 
-//        assertEquals("James", jsonPath.getString("firstname"));
-//        assertEquals("Brown", jsonPath.getString("lastname"));
-//       // assertEquals(773, jsonPath.getInt("totalprice"));   this value is not passing the test
-//        assertTrue(jsonPath.getBoolean("depositpaid"));
-//        assertEquals("2018-01-01", jsonPath.getString("bookingdates.checkin"));
-//        assertEquals("2019-01-01", jsonPath.getString("bookingdates.checkout"));
-//        assertEquals("Breakfast", jsonPath.getString("additionalneeds"));
+          */
+
+        assertEquals("James", jsonPath.getString("firstname"));
+        assertEquals("Brown", jsonPath.getString("lastname"));
+       // assertEquals(773, jsonPath.getInt("totalprice"));   this value is not passing the test
+        assertTrue(jsonPath.getBoolean("depositpaid"));
+        assertEquals("2018-01-01", jsonPath.getString("bookingdates.checkin"));
+        assertEquals("2019-01-01", jsonPath.getString("bookingdates.checkout"));
+        assertEquals("Breakfast", jsonPath.getString("additionalneeds"));
 
 
         /* Soft assertion for JsonPath
@@ -91,21 +93,21 @@ public class Get06 extends HerOkuAppBaseUrl {
          */
 
         // 1st. Create softAssert Object
-//        SoftAssert softAssert = new SoftAssert();
-//
-//
-//        // 2nd. Do assertion
-//        softAssert.assertEquals(jsonPath.getString("firstName"), "James", "First name didn't match");  // 3rd parameter is a custom message if test fails
-//        softAssert.assertEquals(jsonPath.getString("lastName"), "Brown", "Last name didn't match");
-//        // softAssert.assertEquals(jsonPath.getInt("totalPrice"), 111, "Total price didn't match");
-//        softAssert.assertEquals(jsonPath.getBoolean("depositpaid"), true, "Deposit is not paid");
-//        softAssert.assertEquals(jsonPath.getString("bookingdates.checkin"), "2018-01-01", "Checkin date didn't match");
-//        softAssert.assertEquals(jsonPath.getString("bookingdates.checkout"), "2019-01-01", "Checkout date didn't match");
-//        softAssert.assertEquals(jsonPath.getString("additionalneeds"), "Breakfast", "Additional needs are not provided" );
-//
-//        //  3rd. Use assertAll() method
-//
-//        softAssert.assertAll();
+        SoftAssert softAssert = new SoftAssert();
+
+
+        // 2nd. Do assertion
+        softAssert.assertEquals(jsonPath.getString("firstName"), "James", "First name didn't match");  // 3rd parameter is a custom message if test fails
+        softAssert.assertEquals(jsonPath.getString("lastName"), "Brown", "Last name didn't match");
+        // softAssert.assertEquals(jsonPath.getInt("totalPrice"), 111, "Total price didn't match");
+        softAssert.assertEquals(jsonPath.getBoolean("depositpaid"), true, "Deposit is not paid");
+        softAssert.assertEquals(jsonPath.getString("bookingdates.checkin"), "2018-01-01", "Checkin date didn't match");
+        softAssert.assertEquals(jsonPath.getString("bookingdates.checkout"), "2019-01-01", "Checkout date didn't match");
+        softAssert.assertEquals(jsonPath.getString("additionalneeds"), "Breakfast", "Additional needs are not provided" );
+
+        //  3rd. Use assertAll() method
+
+        softAssert.assertAll();
 
 
     }

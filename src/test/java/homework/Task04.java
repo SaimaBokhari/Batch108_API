@@ -13,13 +13,25 @@ public class Task04 extends HerOkuAppBaseUrl {
 
     /*
         Given
-            https://restful-booker.herokuapp.com/booking?firstname=Brandon&lastname=Wilson
+            https://restful-booker.herokuapp.com/booking?firstname=Carlos&lastname=Sevilla
+            {
+    "firstname": "Carlos",
+    "lastname": "Sevilla",
+    "totalprice": 111,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2018-01-01",
+        "checkout": "2019-01-01"
+    },
+    "additionalneeds": "Breakfast"
+}
+
         When
             User sends get request to the URL
         Then
             Status code is 200
         And
-            Among the data there should be someone whose firstname is "Brandon" and lastname is "Wilson"
+            Among the data there should be someone whose firstname is "Carlos" and lastname is "Sevilla"
 
  */
 
@@ -28,7 +40,7 @@ public class Task04 extends HerOkuAppBaseUrl {
     public void task04(){
         // Set the URL
 
-        spec.pathParam("first", "booking").queryParams("firstname","Brandon", "lastname","Wilson");
+        spec.pathParam("first", "booking").queryParams("firstname","Carlos", "lastname","Sevilla");
 
 
         // Set the expected data

@@ -64,7 +64,7 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
                 idsGreaterThan190.add(w);
             }
         }
-        System.out.println("ids greater than: " + idsGreaterThan190);
+        System.out.println("ids greater than 190: " + idsGreaterThan190);
         //Now assert them
         assertEquals(10, idsGreaterThan190.size());
 

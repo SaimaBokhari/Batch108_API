@@ -40,7 +40,7 @@ public class Task07 extends ReqresInBaseUrl {
 
         // Set the expected data
         ReqresInTestData obj = new ReqresInTestData();
-        Map<String,String> expectedData = obj.expectedDataReqres("morpheus", "leader", "2022-11-22T07:09:00.361Z" );
+        Map<String,String> expectedData = obj.expectedDataReqres("morpheus", "leader");
         System.out.println(expectedData);
 
         // Send the request and get the response
@@ -61,21 +61,15 @@ public class Task07 extends ReqresInBaseUrl {
                 assertThat().
                 statusCode(201).
                 body("name",equalTo("morpheus"),
-                        "job", equalTo("leader"),
-                        "createdAt", equalTo("2022-11-22T07:14:10.625Z"));
+                        "job", equalTo("leader"));
 
         // hard assertion
 
         assertEquals(201, response.statusCode());
         assertEquals(actualData.get("name"), expectedData.get("name"));
         assertEquals(actualData.get("job"), expectedData.get("job"));
-       // assertEquals(actualData.get("createdAt"), expectedData.get("createdAt"));
-
 
 
     }
-
-
-
 
 }
