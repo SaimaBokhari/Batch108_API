@@ -1,6 +1,6 @@
 package homework;
 
-import base_urls.ReqresInBaseUrl;
+import base_urls.ReqresBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class Task07 extends ReqresInBaseUrl {
+public class Task07 extends ReqresBaseUrl {
     /*
         Given
             1) https://reqres.in/api/users

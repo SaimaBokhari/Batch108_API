@@ -1,4 +1,4 @@
-package homework;
+package get_requests;
 
 import base_urls.ReqresBaseUrl;
 import io.restassured.response.Response;
@@ -7,11 +7,14 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
-import static io.restassured.RestAssured.*;
-import static org.testng.AssertJUnit.*;
+import static io.restassured.RestAssured.given;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertFalse;
 
-public class Task02 extends ReqresBaseUrl {
-     /*
+public class Get14 extends ReqresBaseUrl {
+    /*
+    HW Task02
+
         Given
             https://reqres.in/api/users/23
         When
@@ -47,14 +50,24 @@ public class Task02 extends ReqresBaseUrl {
                 statusCode(404).
                 statusLine("HTTP/1.1 404 Not Found").
                 body("isEmpty()", Matchers.is(true));
+        // or
 
-        assertEquals("cloudflare", response.getHeader("server"));
+        assertEquals(404, response.statusCode());
+        assertEquals("HTTP/1.1 404 Not Found", response.statusLine());
+        assertEquals("cloudflare", response.header("Server"));
 
+
+        // response body should be empty
+
+        System.out.println(response.asString().length());  // 8
         // Yasin's way to check if body is empty
         assertEquals(0, response.as(HashMap.class).size());
 
         // Emina's way to check if body is empty
         assertFalse(response.asString().contains("Not Found"));
+
+        // Teacher's way
+        assertEquals(0, response.asString().replaceAll("[^A-Za-z0-9]", "").length());
 
 
 
@@ -63,4 +76,3 @@ public class Task02 extends ReqresBaseUrl {
     }
 
 }
-

@@ -1,6 +1,6 @@
 package homework;
 
-import base_urls.ReqresInBaseUrl;
+import base_urls.ReqresBaseUrl;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class Task06 extends ReqresInBaseUrl {
+public class Task06 extends ReqresBaseUrl {
      /*
        Given
               https://reqres.in/api/unknown/

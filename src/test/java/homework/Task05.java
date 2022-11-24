@@ -1,6 +1,6 @@
 package homework;
 
-import base_urls.ReqresInBaseUrl;
+import base_urls.ReqresBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -9,7 +9,7 @@ import org.testng.asserts.SoftAssert;
 
 import static io.restassured.RestAssured.given;
 
-public class Task05 extends ReqresInBaseUrl {
+public class Task05 extends ReqresBaseUrl {
 
      /*
         Given
