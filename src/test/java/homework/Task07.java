@@ -3,6 +3,7 @@ package homework;
 import base_urls.ReqresBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
 import test_data.ReqresInTestData;
 
@@ -62,6 +63,11 @@ public class Task07 extends ReqresBaseUrl {
                 statusCode(201).
                 body("name",equalTo("morpheus"),
                         "job", equalTo("leader"));
+        // or
+
+        Assert.assertEquals(201, response.getStatusCode());
+        Assert.assertEquals(expectedData.get("name"),actualData.get("name"));
+        Assert.assertEquals(expectedData.get("job"),actualData.get("job"));
 
         // hard assertion
 
@@ -73,3 +79,6 @@ public class Task07 extends ReqresBaseUrl {
     }
 
 }
+
+
+

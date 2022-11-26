@@ -46,7 +46,8 @@ public class Task03 extends ReqresBaseUrl {
          // Do assertion
 
         //Do Assertion
-        response.then().
+        response.
+                then().
                 assertThat().
                 statusCode(200).
                 contentType(ContentType.JSON).
@@ -54,6 +55,7 @@ public class Task03 extends ReqresBaseUrl {
                         "data.first_name",equalTo("Janet"),
                         "data.last_name",equalTo("Weaver"),
                         "support.text", equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
+
 
 
     }

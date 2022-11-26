@@ -40,8 +40,12 @@ public class Task01 extends ReqresBaseUrl {
 //        assertEquals("application/json", response.contentType());
 //        assertEquals("HTTP/1.1 200 OK", response.statusLine());
 
-        response.then().assertThat().statusCode(200).statusLine("HTTP/1.1 200 OK").contentType(ContentType.JSON);
-
+        response.
+                then().
+                assertThat().
+                statusCode(200).
+                contentType(ContentType.JSON).
+                statusLine("HTTP/1.1 200 OK");
 
 
 

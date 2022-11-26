@@ -40,7 +40,8 @@ public class Task04 extends HerOkuAppBaseUrl {
     public void task04(){
         // Set the URL
 
-        spec.pathParam("first", "booking").queryParams("firstname","Carlos", "lastname","Sevilla");
+        spec.pathParam("first", "booking").
+                queryParams("firstname","Carlos", "lastname","Sevilla");
 
 
         // Set the expected data
@@ -55,9 +56,8 @@ public class Task04 extends HerOkuAppBaseUrl {
         assertTrue(response.asString().contains("bookingid"));
 
 
+
+
     }
-
-
-
 
 }

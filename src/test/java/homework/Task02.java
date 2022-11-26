@@ -56,6 +56,15 @@ public class Task02 extends ReqresBaseUrl {
         // Emina's way to check if body is empty
         assertFalse(response.asString().contains("Not Found"));
 
+        // Hard assertion
+            assertEquals(404, response.statusCode());
+            assertEquals("HTTP/1.1 404 Not Found",response.statusLine());
+            assertEquals("cloudflare",response.getHeader("Server"));
+            assertEquals(0, response.asString().replaceAll("[^A-Za-z0-9]", "").length());
+            //or
+            assertEquals(0,response.as(HashMap.class).size());
+
+        }
 
 
 

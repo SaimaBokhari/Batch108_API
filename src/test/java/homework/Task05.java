@@ -51,19 +51,16 @@ public class Task05 extends ReqresBaseUrl {
         response.prettyPrint();
 
         // Do assertion (soft-assertion)
-
-        response.then().assertThat().statusCode(200).contentType(ContentType.JSON);
-
         // 1st. Create softAssert Object
         JsonPath jsonPath = response.jsonPath();
         SoftAssert softAssert = new SoftAssert();
 
 
-        softAssert.assertEquals(jsonPath.getInt("data.id"), 3);
-        softAssert.assertEquals(jsonPath.getString("data.name"), "true red");
-        softAssert.assertEquals(jsonPath.getInt("data.year"), 2002);
-        softAssert.assertEquals(jsonPath.getString("data.color"), "#BF1932");
-        softAssert.assertEquals(jsonPath.getString("data.pantone_value"), "19-1664");
+        softAssert.assertEquals(jsonPath.getInt("data.id"), 3, "Id did not match");
+        softAssert.assertEquals(jsonPath.getString("data.name"), "true red", "Name did not match");
+        softAssert.assertEquals(jsonPath.getInt("data.year"), 2002, "Year did not match");
+        softAssert.assertEquals(jsonPath.getString("data.color"), "#BF1932", "Color did not match");
+        softAssert.assertEquals(jsonPath.getString("data.pantone_value"), "19-1664", "pantone_value did not match");
 
         softAssert.assertEquals(jsonPath.getString("support.url"), "https://reqres.in/#support-heading");
         softAssert.assertEquals(jsonPath.getString("support.text"), "To keep ReqRes free, contributions towards server costs are appreciated!");

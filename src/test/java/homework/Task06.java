@@ -1,6 +1,7 @@
 package homework;
 
 import base_urls.ReqresBaseUrl;
+import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.hasSize;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class Task06 extends ReqresBaseUrl {
@@ -41,7 +43,13 @@ public class Task06 extends ReqresBaseUrl {
         // Do assertion
 
         // 1)Status code is 200
-        assertEquals(200, response.statusCode());
+        // assertEquals(200, response.statusCode());
+        response.
+                then().
+                statusCode(200).
+                contentType(ContentType.JSON).
+                body("data",hasSize(6));
+
 
         // 2)Print all pantone_values
         JsonPath jsonPath = response.jsonPath();
@@ -84,8 +92,6 @@ public class Task06 extends ReqresBaseUrl {
         assertEquals(2,namesListLambda.size());
 
     }
-
-
 
 }
 

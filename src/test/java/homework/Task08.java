@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 import test_data.PetStoreTestData;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -28,6 +29,14 @@ public class Task08 extends PetStoreBaseUrl {
     "userStatus": 82
   }
 ]
+
+Then
+            Status code is 200
+            And response body should be like {
+                                                "code": 200,
+                                                "type": "unknown",
+                                                "message": "6874988058"
+                                             }
     */
 
     @Test
@@ -47,18 +56,36 @@ public class Task08 extends PetStoreBaseUrl {
 
         // Do assertion
 
-        assertEquals(200, response.statusCode());
+        Map<String ,Object> actualData =response.as(HashMap.class);
+        assertEquals(200,response.statusCode());
+        assertEquals(200,actualData.get("code"));
+        assertEquals("unknown",actualData.get("type"));
 
         /*
-         I got the status code 200 on swagger and on intelliJ as well.. but I don't get to see the body of the data
-         in Json format when I pretty print it. This is the response body I see on the console. I don't know the reason.
 
-        {
-    "code": 200,
-    "type": "unknown",
-    "message": "134"
-}
+@Test
+    public void post01() {
+        spec.pathParam("first", "user");
 
+        //You can create payload by using pojo class as well.
+
+        Map<String, Object> expectedData = new HashMap<>();//You can create payload by using pojo class as well.
+        expectedData.put("username", "JohnDoe");
+        expectedData.put("firstName", "John");
+        expectedData.put("lastName", "Doe");
+        expectedData.put("email", "john@doe.com");
+        expectedData.put("password", "1234");
+        expectedData.put("phone", "1234");
+        expectedData.put("userStatus", 123);
+
+        Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
+        response.prettyPrint();
+
+        Map<String ,Object> actualData =response.as(HashMap.class);
+        assertEquals(200,response.statusCode());
+        assertEquals(200,actualData.get("code"));
+        assertEquals("unknown",actualData.get("type"));
+    }
          */
 
 
