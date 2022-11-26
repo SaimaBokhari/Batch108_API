@@ -7,6 +7,18 @@ import static io.restassured.RestAssured.given;
 
 public class Get01 {
     /*
+
+    API stands for “application programming interface.”
+
+More simply, it is a collection of definitions, instructions, and protocols for building and connecting software. An API is the connection between two programs that exposes the select business or operational value of one to the other.
+
+- APIs establish a connection between systems and enables data access
+- Allows monitoring of users and their activity
+- Well-designed APIs Increase security
+- Hides back-end complexity from developers
+
+
+
     What is a POM? A Project Object Model or POM is the fundamental unit of work in Maven.
     It is an XML file that contains information about the project and configuration details
     used by Maven to build the project. It contains default values for most projects.

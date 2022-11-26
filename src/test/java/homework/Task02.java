@@ -64,7 +64,7 @@ public class Task02 extends ReqresBaseUrl {
             //or
             assertEquals(0,response.as(HashMap.class).size());
 
-        }
+
 
 
 
