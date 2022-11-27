@@ -22,4 +22,13 @@ public class JsonPlaceHolderTestData {
         // we use this logic (if statements for method call) if we are using this method for patch request
     }
 
+    public String expectedDataInString(Integer userId, String title, Boolean completed){
+        String expectedData = "{\n" +
+                " \"userId\": "+userId+",\n" +
+                " \"title\": \""+title+"\",\n" +
+                " \"completed\": "+completed+"\n" +
+                "}";
+        return expectedData;
+    }
+
 }
