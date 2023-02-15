@@ -38,7 +38,7 @@ public class Delete01 extends JsonPlaceHolderBaseUrl {
         response.prettyPrint();
 
         // Do assertion
-        // de-serialisation first
+        // de-serialisation first using Gson
         Map<String, Object> actualData = response.as(HashMap.class);
         System.out.println("actualData = " + actualData);
 
@@ -60,7 +60,6 @@ public class Delete01 extends JsonPlaceHolderBaseUrl {
         1. Create a new data by using Post request
         2. Use "Delete request" to delete new data
         3. Do Not delete existing data, always create a data to delete.
-
          */
     }
 

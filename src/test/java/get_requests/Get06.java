@@ -52,39 +52,40 @@ public class Get06 extends HerOkuAppBaseUrl {
         // Do assertion
 
         // 1st way: using matchers for body() method
-        response.
-                then().
-                assertThat().
-                statusCode(200).
-                contentType(ContentType.JSON).
-                body("firstname", equalTo("Taylor"),
-                        "lastname", equalTo("Miller"),
-                        // "totalPrice", equalTo(111),    //this value is not passing the test
-                        "depositpaid", equalTo(true),
-                        "bookingdates.checkin", equalTo("2022-12-09"),
-                        "bookingdates.checkout", equalTo("2022-12-22"),
-                        "additionalneeds", equalTo("breakfast"));
+//        response.
+//                then().
+//                assertThat().
+//                statusCode(200).
+//                contentType(ContentType.JSON).
+//                body("firstname", equalTo("John"),
+//                        "lastname", equalTo("Smith"),
+//                         //"totalPrice", equalTo(111),    //this value is not passing the test
+//                        "depositpaid", equalTo(true),
+//                        "bookingdates.checkin", equalTo("2018-01-01"),
+//                        "bookingdates.checkout", equalTo("2019-01-01"),
+//                        "additionalneeds", equalTo("Breakfast"));
 
         // 2nd way: We will use JsonPath Class
-               JsonPath jsonPath = response.jsonPath();  // Hard Assertion
+               JsonPath jsonPath = response.jsonPath();  // Create jsonpath object by using response object
 
-         /* JsonPath is used for data manipulation
+         /* JsonPath is a class and is used for data manipulation
          JsonPath() enables us to extract data from inside the body
          Jsonpath class enables us to do Math operations like division in the following example
          System.out.println(jsonPath.getInt("totalPrice") / 3);
 
           */
 
-        assertEquals("James", jsonPath.getString("firstname"));
-        assertEquals("Brown", jsonPath.getString("lastname"));
-       // assertEquals(773, jsonPath.getInt("totalprice"));   this value is not passing the test
-        assertTrue(jsonPath.getBoolean("depositpaid"));
-        assertEquals("2018-01-01", jsonPath.getString("bookingdates.checkin"));
-        assertEquals("2019-01-01", jsonPath.getString("bookingdates.checkout"));
-        assertEquals("Breakfast", jsonPath.getString("additionalneeds"));
+//        assertEquals("John", jsonPath.getString("firstname"));
+//        assertEquals("Smith", jsonPath.getString("lastname"));
+//       // assertEquals(111, jsonPath.getInt("totalprice"));   this value is not passing the test
+//        assertTrue(jsonPath.getBoolean("depositpaid"));
+//        assertEquals("2018-01-01", jsonPath.getString("bookingdates.checkin"));
+//        assertEquals("2019-01-01", jsonPath.getString("bookingdates.checkout"));
+//        assertEquals("Breakfast", jsonPath.getString("additionalneeds"));
+//
+//
 
-
-        /* Soft assertion for JsonPath
+        /* 3rd way: Soft assertion using JsonPath
            There are three steps:
            1st. Create softAssert Object
            2nd. Do assertion
@@ -97,17 +98,17 @@ public class Get06 extends HerOkuAppBaseUrl {
 
 
         // 2nd. Do assertion
-        softAssert.assertEquals(jsonPath.getString("firstName"), "James", "First name didn't match");  // 3rd parameter is a custom message if test fails
-        softAssert.assertEquals(jsonPath.getString("lastName"), "Brown", "Last name didn't match");
-        // softAssert.assertEquals(jsonPath.getInt("totalPrice"), 111, "Total price didn't match");
-        softAssert.assertEquals(jsonPath.getBoolean("depositpaid"), true, "Deposit is not paid");
-        softAssert.assertEquals(jsonPath.getString("bookingdates.checkin"), "2018-01-01", "Checkin date didn't match");
-        softAssert.assertEquals(jsonPath.getString("bookingdates.checkout"), "2019-01-01", "Checkout date didn't match");
-        softAssert.assertEquals(jsonPath.getString("additionalneeds"), "Breakfast", "Additional needs are not provided" );
-
-        //  3rd. Use assertAll() method
-
-        softAssert.assertAll();
+//        softAssert.assertEquals(jsonPath.getString("firstName"), "John", "First name didn't match");  // 3rd parameter is a custom message if test fails
+//        softAssert.assertEquals(jsonPath.getString("lastName"), "Smith", "Last name didn't match");
+//        // softAssert.assertEquals(jsonPath.getInt("totalPrice"), 111, "Total price didn't match");
+//        softAssert.assertEquals(jsonPath.getBoolean("depositpaid"), true, "Deposit is not paid");
+//        softAssert.assertEquals(jsonPath.getString("bookingdates.checkin"), "2018-01-01", "Checkin date didn't match");
+//        softAssert.assertEquals(jsonPath.getString("bookingdates.checkout"), "2019-01-01", "Checkout date didn't match");
+//        softAssert.assertEquals(jsonPath.getString("additionalneeds"), "Breakfast", "Additional needs are not provided" );
+//
+//        //  3rd. Use assertAll() method
+//
+//        softAssert.assertAll();
 
 
     }

@@ -15,14 +15,14 @@ public class Get09 extends HerOkuAppBaseUrl {
 
     /*
         Given
-            https://restful-booker.herokuapp.com/booking/246
+            https://restful-booker.herokuapp.com/booking/24
         When
             I send GET Request to the url
         Then
             Response body should be like that;
             {
-                "firstname": "Alex",
-                "lastname": "Dominguez",
+                "firstname": "John",
+                "lastname": "Smith",
                 "totalprice": 111,
                 "depositpaid": true,
                 "bookingdates": {
@@ -35,7 +35,7 @@ public class Get09 extends HerOkuAppBaseUrl {
     @Test
     public void get09() {
         // Set the URL
-        spec.pathParams("first", "booking", "second", 246);
+        spec.pathParams("first", "booking", "second", 24);
 
         // Set the expected data
         // we create inner map for booking dates and an outer map for all values
@@ -48,8 +48,8 @@ public class Get09 extends HerOkuAppBaseUrl {
 
         //outer map
         Map<String, Object> expectedData = new HashMap<>();
-        expectedData.put("firstname", "Alex");
-        expectedData.put("lastname", "Dominguez");
+        expectedData.put("firstname", "John");
+        expectedData.put("lastname", "Smith");
         expectedData.put("totalprice", 111);
         expectedData.put("depositpaid", true);
         expectedData.put("bookingdates", bookingDatesMap);
@@ -74,7 +74,7 @@ public class Get09 extends HerOkuAppBaseUrl {
         assertEquals(expectedData.get("additionalneeds"), actualData.get("additionalneeds"));
 
         // 1st way:
-        // we have to use typecasting to get the inner json for bookingdates and convert it to Map data type so we
+        // we have to use typecasting to get the inner json for bookingdates and convert it to Map data type, so we
         // can get the checkin key and it's value
         assertEquals(((Map) expectedData.get("bookingdates")).get("checkin"), ((Map) actualData.get("bookingdates")).get("checkin"));
         assertEquals(((Map) expectedData.get("bookingdates")).get("checkout"), ((Map) actualData.get("bookingdates")).get("checkout"));

@@ -34,6 +34,7 @@ public class Get03 extends JsonPlaceHolderBaseUrl {
         // Set the URL
         // String is not the recommended way, so we'll learn something new
         // we create a separate class, create inheritance and use that method every time
+        // pathParameters are used to make the search narrow, by narrowing down the search area
 
         spec.pathParams("first", "todos", "second", 23);
 
@@ -90,7 +91,5 @@ public class Get03 extends JsonPlaceHolderBaseUrl {
 
 
     }
-
-
 
 }

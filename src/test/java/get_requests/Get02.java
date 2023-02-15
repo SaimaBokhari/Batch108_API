@@ -9,7 +9,7 @@ import static org.testng.AssertJUnit.*;
 public class Get02 {
     /*
    Given
-       https://restful-booker.herokuapp.com/booking/1
+       https://restful-booker.herokuapp.com/booking/101
    When
        User send a GET Request to the url
    Then
@@ -26,8 +26,9 @@ public class Get02 {
 
    @Test
    public void get02(){
+
        // i) Set the URL
-       String url = " https://restful-booker.herokuapp.com/booking/1";
+       String url = " https://restful-booker.herokuapp.com/booking/1001";
 
        // ii) Set the expected data
        // we will do this step later
@@ -53,9 +54,7 @@ public class Get02 {
        // Do assertion for Server is "Cowboy"
        // assertEquals(x,y) method passes if x is equal to y.
        assertEquals("Cowboy",response.getHeader("Server"));
-
-
-
+       // Expected data comes from test case, Actual data comes form API
 
        // assertFalse() is good for negative tests
 

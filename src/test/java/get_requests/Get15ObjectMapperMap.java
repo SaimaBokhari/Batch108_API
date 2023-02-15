@@ -50,6 +50,8 @@ public class Get15ObjectMapperMap extends JsonPlaceHolderBaseUrl {
 
         // To convert our string into map, we call method from JsonUtil class like JsonUtils.convertJsonToJavaObject
         // JsonUtils.convertJsonToJavaObject method is the ObjectMapper and it converts first parameter (which MUST be string) to second parameter (which can be any data type)... it's map in this example
+        // we created this to handle the exception of readValue() .. see notes in Post05 class
+
         Map<String, Object> expectedData = JsonUtils.convertJsonToJavaObject(expectedDataInString, HashMap.class); // we use pojo class here as well
         System.out.println("expectedData = " + expectedData);
 

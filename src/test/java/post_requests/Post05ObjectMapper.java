@@ -71,7 +71,7 @@ public class Post05ObjectMapper extends DummyApiBaseUrl {
                         "message": "Successfully! Record has been added."
                     }
 
-
+** pojo class with Object Mapper is the BEST practice in the market**
 
      */
 
@@ -81,10 +81,10 @@ public class Post05ObjectMapper extends DummyApiBaseUrl {
         // Set the URL
         spec.pathParam("first", "create");
 
-        // Set the expected data
+        // Set the expected data / payload
         // for inner pojo to do payload / to perform the post request
 
-        DummyApiDataPojo expectedData = new DummyApiDataPojo("Ali Can", 111111, 23,"Perfect imag");
+        DummyApiDataPojo expectedData = new DummyApiDataPojo("Ali Can", 111111, 23,"Perfect image");
         System.out.println("expectedData = " + expectedData);
 
         // Send the request and get the response
@@ -94,7 +94,12 @@ public class Post05ObjectMapper extends DummyApiBaseUrl {
         // Do assertion
         // de-serialisation
         // today we are using  ObjectMapper from codehaus
+
         // readValue() will show error and ask to throw an exception
+        // new ObjectMapper().readValue(any data in String , the data type you want to convert to (Hashmap class or pojo class etc.)
+        // You have to throw exception every time you use readValue() like this.. to avoid this we need to handle exception... see JsonUtils .. recommended way... see the Get15 class
+        // otherwise you can use the object mapper the way we used in the following way ... not recommended though
+
         DummyApiResponsePojo actualData = new ObjectMapper().readValue(response.asString(), DummyApiResponsePojo.class);
         System.out.println("actualData = " + actualData);
 

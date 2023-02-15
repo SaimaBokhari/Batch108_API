@@ -11,6 +11,9 @@ public class BookingDatesPojo {
     3) Create public getters and setters for all variables
     4) Create toString() method  (just for reading the data on the console)
 
+    You can use following websites to create pojo class
+    https://www.jsonschema2pojo.org/  OR
+    https://json2csharp.com/code-converters/json-to-pojo
      */
 
     private String checkin;

@@ -54,23 +54,23 @@ public class Get12Pojo extends HerOkuAppBaseUrl {
         // Do assertion
         // de-serialisation
        BookingPojo actualData = response.as(BookingPojo.class);
-        System.out.println("actualData = " + actualData);
+       System.out.println("actualData = " + actualData);
 
         assertEquals(200, response.statusCode());
-        assertEquals(expectedData.getFirstname(),actualData.getFirstname());
-        assertEquals(expectedData.getLastname(),actualData.getLastname());
-        assertEquals(expectedData.getTotalprice(),actualData.getTotalprice());
-        assertEquals(expectedData.getDepositpaid(),actualData.getDepositpaid());
-        assertEquals(expectedData.getAdditionalneeds(),actualData.getAdditionalneeds());
+        assertEquals("First names don't match",expectedData.getFirstname(),actualData.getFirstname());
+        assertEquals("Last names don't match", expectedData.getLastname(),actualData.getLastname());
+        assertEquals("Total price doesn't match", expectedData.getTotalprice(),actualData.getTotalprice());
+        assertEquals("Deposit paid doesn't match", expectedData.getDepositpaid(),actualData.getDepositpaid());
+        assertEquals("Additional needs don't match", expectedData.getAdditionalneeds(),actualData.getAdditionalneeds());
 
         // 1st way:
-        assertEquals(expectedData.getBookingdates().getCheckin(), actualData.getBookingdates().getCheckin());
-        assertEquals(expectedData.getBookingdates().getCheckout(), actualData.getBookingdates().getCheckout());
+        assertEquals("Check in dates don't match", expectedData.getBookingdates().getCheckin(), actualData.getBookingdates().getCheckin());
+        assertEquals("Check out dates don't match",expectedData.getBookingdates().getCheckout(), actualData.getBookingdates().getCheckout());
 
 
         //2nd way: recommended coz shorter
-        assertEquals(bookingDatesPojo.getCheckin(), actualData.getBookingdates().getCheckin());
-        assertEquals(bookingDatesPojo.getCheckout(), actualData.getBookingdates().getCheckout());
+        assertEquals("Check in dates don't match",bookingDatesPojo.getCheckin(), actualData.getBookingdates().getCheckin());
+        assertEquals("Check out dates don't match", bookingDatesPojo.getCheckout(), actualData.getBookingdates().getCheckout());
 
 
 

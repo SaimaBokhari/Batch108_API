@@ -1,0 +1,123 @@
+API : Application Programming Interface
+
+APIs do not have user interface
+APIs are used to communicate with other applications
+
+Every API gets request and sends response
+APIs are like waiters who take requests (orders) from the customers and bring the response (food)
+
+APIs can have different programming languages so how they communicate with each other?
+APIs commonly have Json and xml data format.
+Json data format is more common in the market these days.
+Json format is like maps; xml format is like html codes
+RestAssured library is used for automated API testing. (another library is Restful)
+
+When we do API testing, we need endpoints (url) for following actions (CRUD Operations):
+Create
+Read
+Update
+Delete
+As an API Automation Tester, we have to create different scenarios and
+the scenarios are created on the basis of requirements documents. (SWAGGER DOCUMENT)
+
+As an API Automation tester, You will check all endpoints if they're working as expected or not.
+
+HTTP Request Methods:
+1. GET Method: for reading data from database (Read --> R in CRUD)
+               To be able to use GET method, we need just "endpoint"
+2. POST Method: for creating new data in database (Create --> C in CRUD)
+               To be able to send POST request, we need endpoint + Request Body
+3. PUT Method: for fully updating data in database (Update--> U in CRUD)
+               To be able to send PUT request, we need endpoint + fully Request Body
+4. PATCH Method: for partial update of data in database (Update --> U in CRUD)
+               To be able to send PATCH request, we need endpoint + partial Request Body
+5. DELETE Method: for deleting data from database (Delete --> D in CRUD)
+               To be able to Delete any record in database, we need endpoint ONLY
+
+base url + /pet   ==> endpoint
+
+HTTP Status Codes
+100s ==> it means the request is received, and it is under process
+200s ==> it means the request is successfully received, understood and accepted
+300s ==> it means further actions must be taken to complete the request/ you need to add something more to the request (Can be YOUR MISTAKE)
+400s ==> it means the request contains incorrect syntax and cannot be fulfilled (Can be YOUR MISTAKE)
+500s ==> it means server is down (NOT YOUR ERROR)
+
+In API Testing,  STATUS CODE must be tested first.
+If the status code is 200s, you can test the details.
+We use SWAGGER Document to check the expected behaviour of the endpoints.
+
+
+POSTMAN is a User Interface / application to test endpoints of an API MANUALLY.
+Rest Assured Library is a library in Java that is used to test endpoints in AUTOMATION.
+
+You should test manually FIRST and then automate according to the response.
+If the application uses more than one data format like Json and xml, our job as testers is
+to test for both data types
+
+COOKIES:
+When you go to a website, it gets your basic information like IP Address, username etc.
+That application/website asks you if you want, I can save that information for you,
+so next time when you visit, you can use it faster
+If you accept cookies, the application creates a small area on your local machine/laptop memory,
+and save it.
+Accept cookies from Trustworthy websites only.
+
+JUnit is a framework to make testing easy.
+ENUMS are storage for CONSTANT VARIABLES e.g. States names, days of the week etc. (you can create an enum just like you create class)
+
+@Test
+    public void get03(){
+
+    1st Step:  Set the Url
+    2nd Step:  Set the expected data
+    3rd Step:  Send the request and get the response
+    4th Step:  Do assertion
+
+    }
+
+Remember API doesn't have any data on its own. It's like a middleman, who takes the request and brings the data.
+I have used GSon library in my framework. I used as() method to convert response from API to Hashmap.
+Testing culture:
+             When you create a new test method in your classes, run all the previous test methods as well
+             just to make sure that you didn't break any previous codes/methods (even though you're sure
+             that the new test method is completely independent)
+Get() method is the easiest method in API.
+POST, PUT, PATCH and DELETE methods are dangerous as anyone can come and do these actions on API and destroy it.
+So API has authorisation tokens. There are different types of authorisation tokens.
+Base Auth
+Bearer Token
+
+ bearer token  or basic authority is used to delete any existing data
+         basic authority => username: admin, password: password123 for herokuapp
+         bearer token is in swagger documentation
+
+         **READ the documentation before Delete request**
+
+         To create bearer token, we need swagger documentation  ==>  https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken
+         1) Post request to Postman  2) copy/paste endpoint in postman  3) copy/paste Json body   .. will have bearer token for 24 hours
+         like {
+            "token": "70fa14222e47208"
+        }
+        Bearer Token 1619a6d1e962497 will be used to give you authority to delete the data according to the documentation
+        READ the documentation before Delete request ...
+
+
+POJO==> Plain Old Java Object
+How to set Pojo class
+    1) Create private variables for every key
+    2) Create constructors with all parameters and without any parameter
+    3) Create public getters and setters for all variables
+    4) Create toString() method  (just for reading the data on the console)
+
+How do we handle different key-values in response?
+We use @JsonIgnoreProperties(ignoreUnknown = true) annotation at the top of the pojo class.
+It comes from "org.codehaus.jackson.annotate.JsonIgnoreProperties"
+
+NOTE: REMEMBER TO DELETE THE DATA THAT YOU CREATE IN POST REQUESTS AND CLOSE THE CONNECTION WITH DATABASE
+      AFTER EVERY TEST RUN.
+      Everytime we connect with DataBase, we are charged for using cloud services.
+
+      For that you can create @After method in the base url classes just like we
+      created @Before annotation to create a connection.
+

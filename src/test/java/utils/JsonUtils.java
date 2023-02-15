@@ -15,8 +15,6 @@ public class JsonUtils {
         mapper = new ObjectMapper();
     }
 
-
-
     // This is Generic method. This will accept two parameters and convert 1st parameter
     // to 2nd parameter data tye by using ObjectMapper Class
     // <T> T is a return type which returns any data type
@@ -30,5 +28,6 @@ public class JsonUtils {
         return javaResult;
     }
 
+    // Most probably this type of util classes will be given to you by your company
 
 }

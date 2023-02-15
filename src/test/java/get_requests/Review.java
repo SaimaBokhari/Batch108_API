@@ -1,73 +1,69 @@
 package get_requests;
 
+import base_urls.HerOkuAppBaseUrl;
+import base_urls.JsonPlaceHolderBaseUrl;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
+import test_data.JsonPlaceHolderTestData;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
-import static org.testng.AssertJUnit.*;
+import static org.hamcrest.Matchers.*;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
-public class Review {
+public class Review extends JsonPlaceHolderBaseUrl {
 
-    /*
-    Task 1:
-
-   Given
-       https://restful-booker.herokuapp.com/booking/101
-   When
-       User sends a GET Request to the url
-   Then
-       HTTP Status Code should be 200
-   And
-       Content Type should be JSON
-   And
-       Status Line should be HTTP/1.1 200 OK
-*/
-
-
+    // Task 8
+      /*
+         Given
+            https://jsonplaceholder.typicode.com/todos/2
+        When
+            I send GET Request to the URL
+        Then
+            Status code is 200
+            And "completed" is false
+            And "userId" is 1
+            And "title" is "quis ut nam facilis et officia qui"
+            And header "Via" is "1.1 vegur"
+            And header "Server" is "cloudflare"
+            {
+                "userId": 1,
+                "id": 2,
+                "title": "quis ut nam facilis et officia qui",
+                "completed": false
+            }
+     */
     @Test
-    public void get01(){
-//        String rul = "https://restful-booker.herokuapp.com/booking/101";
-//
-//      Response response = given().when().get(rul);
-//      response.prettyPrint();
-//
-//      response.then().assertThat().statusCode(200).contentType("application/json").statusLine("HTTP/1.1 200 OK");
-//
-//        System.out.println(response.getHeaders());
-//        System.out.println(response.getTime());
+    public void get(){
+
+        spec.pathParams("first","todos", "second", 2);
+
+        //Set the expected data
+        JsonPlaceHolderTestData obj = new JsonPlaceHolderTestData();
+        Map<String, Object> expectedData = obj.expectedDataJPH(1, "quis ut nam facilis et officia qui", false);
+        System.out.println("expectedData = " + expectedData);
 
 
-        /*
-   Given
-       https://restful-booker.herokuapp.com/booking/1
-   When
-       User send a GET Request to the url
-   Then
-       HTTP Status code should be 404
-   And
-       Status Line should be HTTP/1.1 404 Not Found
-   And
-       Response body contains "Not Found"
-   And
-       Response body does not contain "TechProEd"
-   And
-       Server is "Cowboy"
-*/
-        String url = "https://restful-booker.herokuapp.com/booking/1";
-
-        Response response = given().when().get(url);
+        Response response = given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
 
-        response.then().assertThat().statusCode(404).statusLine("HTTP/1.1 404 Not Found");
+        // assertion
+        Map<String, Object> actualData = response.as(HashMap.class);
+        System.out.println("actualData = " + actualData);
 
-        assertTrue(response.asString().contains("Not Found"));
-
-        assertFalse(response.asString().contains("TechPro"));
-
-        assertEquals("Cowboy", response.getHeader("Server"));
-
-
+        assertEquals(200, response.statusCode());
+        assertEquals(expectedData.get("userId"), actualData.get("userId"));
+        assertEquals(expectedData.get("title"), actualData.get("title"));
+        assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        assertEquals("1.1 vegur", response.getHeader("Via"));
+        assertEquals("cloudflare", response.getHeader("Server"));
 
 
 
@@ -76,4 +72,6 @@ public class Review {
 
 
     }
+
+
 }

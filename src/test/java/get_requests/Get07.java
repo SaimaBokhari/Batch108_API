@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static io.restassured.RestAssured.*;
@@ -70,7 +71,8 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
 
 
         // 2nd way: using Groovy Language --  Recommended
-       List<Integer> idsGreaterThan190Groovy = jsonPath.getList("findAll{it.id>190}.id");    // 'it' is like 't->' in lambda
+       List<Integer> idsGreaterThan190Groovy = jsonPath.getList("findAll{it.id>190}.id");    // 'it' is like 't->' in lambda and 'this' in this.class in Java
+        // it means "from the Json Data which we are working in"
         System.out.println("idsGreaterThan190Groovy: " + idsGreaterThan190Groovy);
         assertEquals(10, idsGreaterThan190Groovy.size());
 
@@ -89,6 +91,9 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
 
         List<Integer> userIds = jsonPath.getList("findAll{it. id<5}.userId");
         System.out.println("userIds: " + userIds);
+        Collections.sort(userIds); // elements are sorted in ascending order
+        //assertEquals((Integer)4, userIds.get(userIds.size()-1));
+        // OR
         assertEquals(4, userIds.size());
 
         // 4)  Print all titles whose ids are less than 5

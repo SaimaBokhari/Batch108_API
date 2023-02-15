@@ -44,7 +44,7 @@ public class Patch01 extends JsonPlaceHolderBaseUrl {
 
         // recommended
         JsonPlaceHolderTestData obj = new JsonPlaceHolderTestData();
-        Map<String, Object> expectedData = obj.expectedDataJPH(null, "Read the books", null );
+        Map<String, Object> expectedData = obj.expectedDataJPH(null, "Wash the dishes", null );
 
         // Send the request and get the response
        Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().patch("/{first}/{second}");
@@ -66,11 +66,15 @@ public class Patch01 extends JsonPlaceHolderBaseUrl {
                 then().
                 assertThat().
                 body("userId", equalTo(10),
-                "title", equalTo("Read the books"),
+                "title", equalTo("Wash the dishes"),
                         "completed", equalTo(true));
 
 
-
+/*
+When you create a new test method in your classes, run all the previous test methods as well
+just to make sure that you didn't break any previous codes/methods (even though you're sure
+that the new test method is completely independent)
+ */
 
 
 

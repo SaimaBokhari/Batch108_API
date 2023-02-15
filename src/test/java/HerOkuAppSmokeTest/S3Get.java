@@ -21,17 +21,17 @@ public class S3Get extends HerOkuAppBaseUrl {
     Then
          Status code is 200
     And
-         Response body is like this {
-                             "firstname" : "James",
-                             "lastname" : "Brown",
-                             "totalprice" : 500,
-                             "depositpaid" : false,
-                             "bookingdates" : {
-                                "checkin" : "2022-11-27",
-                                "checkout" : "2022-11-29"
-                            },
-                            "additionalneeds" : "Breakfast"
-                            }
+         Response body is like this  {
+    "firstname": "Sadaf",
+    "lastname": "Ahmed",
+    "totalprice": 159,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2022-10-16",
+        "checkout": "2022-10-24"
+    },
+    "additionalneeds": "Breakfast"
+}
      */
     @Test
     public void get01(){
@@ -39,8 +39,8 @@ public class S3Get extends HerOkuAppBaseUrl {
         spec.pathParams("first", "booking", "second", bookingId);
 
         //Set the expected data
-        BookingDatesPojo bookingDatesPojo = new BookingDatesPojo("2022-11-27","2022-11-29");
-        BookingPojo expectedData = new BookingPojo("James","Brown",500,false,bookingDatesPojo,"Breakfast");
+        BookingDatesPojo bookingDatesPojo = new BookingDatesPojo("2022-10-16","2022-10-24");
+        BookingPojo expectedData = new BookingPojo("Sadaf","Ahmed",159,true,bookingDatesPojo,"Breakfast");
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response

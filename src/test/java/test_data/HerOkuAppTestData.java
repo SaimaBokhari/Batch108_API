@@ -11,7 +11,7 @@ public class HerOkuAppTestData {
         bookingDatesMap.put("checkin", checkin);
         bookingDatesMap.put("checkout",checkout);
 
-        return bookingDatesMap;
+        return bookingDatesMap; // inner json
 
     }
 

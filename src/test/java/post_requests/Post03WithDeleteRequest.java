@@ -2,15 +2,19 @@ package post_requests;
 
 import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.JsonPlaceHolderPojo;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.testng.AssertJUnit.assertEquals;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Post03Pojo extends JsonPlaceHolderBaseUrl {
+import static io.restassured.RestAssured.given;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
+
+public class Post03WithDeleteRequest extends JsonPlaceHolderBaseUrl {
     /*
          Given
             1) https://jsonplaceholder.typicode.com/todos
@@ -38,7 +42,7 @@ public class Post03Pojo extends JsonPlaceHolderBaseUrl {
      */
 
     @Test
-    public void post03(){
+    public void Post03WithDeleteRequest(){
 
         // set the URL
         spec.pathParam("first", "todos");
@@ -51,37 +55,29 @@ public class Post03Pojo extends JsonPlaceHolderBaseUrl {
 
         // Send the request and get the response
         // serialisation (by specifying the content type to be posted
-        Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
-        response.prettyPrint();
+        Response response1 = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}");
+        response1.prettyPrint();
+
+        // Get the id of newly created data
+        JsonPath jsonPath = response1.jsonPath();
+        Integer id  = jsonPath.getInt("id");
+
+        // Set the url for Delete request using that id
+        spec.pathParams("first", "todos", "second", id);
+
+        // Send the request and get the response
+        Response response2 = given().spec(spec).when().delete("/{first}/{second}");
+        response2.prettyPrint();
 
         // Do assertion
-        // 1st way:
-//        response.
-//                then().
-//                assertThat().
-//                statusCode(201).
-//                body("userId", equalTo(expectedData.getUserId()),
-//                        "title", equalTo(expectedData.getTitle()),
-//                        "completed", equalTo(expectedData.getCompleted()));
+        // After deleting the data, response should be empty json. We create an empty map
+        // so that we can do assertion
+        Map<String,Object> actualData = response2.as(HashMap.class);
+        assertTrue(actualData.size()==0);
 
-        // 2nd way:
-        // De-serialisation using GSon ==> as() method comes from GSon
-        JsonPlaceHolderPojo actualData = response.as(JsonPlaceHolderPojo.class); // de-serialisation
-        System.out.println(actualData);
-
-        assertEquals(expectedData.getUserId(), actualData.getUserId());
-        assertEquals(expectedData.getTitle(), actualData.getTitle());
-        assertEquals(expectedData.getCompleted(), actualData.getCompleted());
-
-
-/*
-@JsonIgnoreProperties(ignoreUnknown = true)
-We have to include this annotation on top of pojo class in order to handle the exception
- This will help ignore any value which is not present in response body. e.g. id in this example
-
- */
-
-        // Watch SESSION 7  from Batch 35 36 API ENG by Mr Suleman.
+        /*
+        We can run this test method 1000 times, no problem, cos we are deleting it after every run
+         */
 
     }
 

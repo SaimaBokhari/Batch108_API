@@ -24,8 +24,11 @@ public class Get05 extends HerOkuAppBaseUrl {
     public void get05(){
         //Set the url
         spec.pathParam("first", "booking").
-                queryParams("firstname","Agustin","lastname","Bonfanti");
+                queryParams("firstname","Mary","lastname","Ericsson");
 
+        // queryParams() is used to select a specific data e.g. a book
+        // we use ? after base url and then key:value structure & second key:value structure
+        // pathParam() we use / after base url
         //Set the expected Data
 
 
@@ -37,9 +40,10 @@ public class Get05 extends HerOkuAppBaseUrl {
         //Do Assertion
 
         //Status code is 200
+        // response.then().assertThat().statusCode(200);
         assertEquals(200,response.statusCode());
 
-        //Among the data there should be someone whose firstname is "Agustin" and lastname is "Bonfanti"
+        //Among the data there should be someone whose firstname is "Mary" and lastname is "Ericsson"
         assertTrue(response.asString().contains("bookingid"));
 
 

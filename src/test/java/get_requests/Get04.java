@@ -59,6 +59,12 @@ public class Get04 extends JsonPlaceHolderBaseUrl {
 
         /* hasSize() comes from Matchers
         hasSize() counts the number of elements in that JSON list (key:value structure)
+
+        Following 4 common Matchers methods:
+        equalTo()
+        hasSize()
+        hasItem()
+        hasItems()
          */
 
     }
