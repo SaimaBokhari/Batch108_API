@@ -13,7 +13,7 @@ import java.io.IOException;
 import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class Post05ObjectMapper extends DummyApiBaseUrl {
+public class Post05ObjectMapperPojo extends DummyApiBaseUrl {
     /*
        URL: https://dummy.restapiexample.com/api/v1/create
        HTTP Request Method: POST Request

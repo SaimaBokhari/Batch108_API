@@ -10,7 +10,7 @@ import utils.JsonUtils;
 import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class Get16 extends HerOkuAppBaseUrl {
+public class Get16ObjectMapperPojo extends HerOkuAppBaseUrl {
 
     /*
         Given

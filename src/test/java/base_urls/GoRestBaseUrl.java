@@ -6,7 +6,7 @@ import org.junit.Before;
 
 public class GoRestBaseUrl {
 
-    protected RequestSpecification spec;
+    protected RequestSpecification spec;  // RequestSpecification is an interface. We need to create an object whose data type is RequestSpecification. Interfaces can be data type.
 
     @Before // if we use this annotation at the top of any method, it means this method will
     // be run before any other method

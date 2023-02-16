@@ -3,6 +3,7 @@ package get_requests;
 import base_urls.GoRestBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import pojos.GoRestPojo;
 import test_data.GoRestTestData;
 
 import java.util.HashMap;
@@ -24,11 +25,11 @@ public class Get10 extends GoRestBaseUrl {
            {
     "meta": null,
     "data": {
-        "id": 13,
-        "name": "Suresh Johar",
-        "email": "suresh_johar@von-damore.biz",
-        "gender": "female",
-        "status": "active"
+        "id": 1614,
+        "name": "Sushil Desai",
+        "email": "desai_sushil@dickens.biz",
+        "gender": "male",
+        "status": "inactive"
     }
 }
      */
@@ -36,11 +37,11 @@ public class Get10 extends GoRestBaseUrl {
     @Test
     public void get10(){
         // Set the URL
-        spec.pathParams("first", "users", "second", 13);
+        spec.pathParams("first", "users", "second", 1614);
 
         // Set the expected data
-        GoRestTestData obj = new GoRestTestData();
-       Map<String, String> goRestDataMap = obj.goRestDataMapSetUp("Suresh Johar", "suresh_johar@von-damore.biz", "female", "active");
+       GoRestTestData obj = new GoRestTestData();
+       Map<String, String> goRestDataMap = obj.goRestDataMapSetUp("Sushil Desai", "desai_sushil@dickens.biz", "male", "inactive");
 
        Map<String, Object> expectedData = obj.expectedDataMapSetUp(null,goRestDataMap);
         System.out.println(expectedData);
@@ -63,6 +64,18 @@ public class Get10 extends GoRestBaseUrl {
         assertEquals(goRestDataMap.get("gender"),(((Map)(actualData.get("data"))).get("gender")));
         assertEquals(goRestDataMap.get("status"),(((Map)(actualData.get("data"))).get("status")));
 
+
+        // With Pojo Class
+
+        GoRestPojo actualDataWithPojo = response.as(GoRestPojo.class);
+        System.out.println(actualDataWithPojo);
+
+        assertEquals(200, response.statusCode());
+        assertEquals(expectedData.get("meta"), actualDataWithPojo.getMeta());
+        assertEquals(goRestDataMap.get("name"),actualDataWithPojo.getData().getName());
+        assertEquals(goRestDataMap.get("email"),actualDataWithPojo.getData().getEmail());
+        assertEquals(goRestDataMap.get("gender"),actualDataWithPojo.getData().getGender());
+        assertEquals(goRestDataMap.get("status"), actualDataWithPojo.getData().getStatus());
 
 
     }

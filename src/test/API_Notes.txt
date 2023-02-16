@@ -121,3 +121,12 @@ NOTE: REMEMBER TO DELETE THE DATA THAT YOU CREATE IN POST REQUESTS AND CLOSE THE
       For that you can create @After method in the base url classes just like we
       created @Before annotation to create a connection.
 
+OBJECT MAPPER:
+OBJECT MAPPER is used for serialisation and de-serialisation just like GSon.
+We need to add codehaus dependency in our pom.xml file in order to use Object Mapper in our framework
+
+We will create JsonUtils class and create 2 methods in that class
+1st Method: it is used to convert Json to Java Object. De-serialisation Method
+2nd Method: it is used to convert Java Object to Json. Serialisation Method
+
+** Pojo class with Object Mapper is the BEST practice in the market**

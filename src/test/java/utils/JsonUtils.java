@@ -15,19 +15,34 @@ public class JsonUtils {
         mapper = new ObjectMapper();
     }
 
-    // This is Generic method. This will accept two parameters and convert 1st parameter
-    // to 2nd parameter data tye by using ObjectMapper Class
+    // 1st: De-serialisation Method
+    // This is Generic method coz it works with every kind of data type. This will accept two parameters and convert 1st parameter
+    // to 2nd parameter data type by using ObjectMapper Class
     // <T> T is a return type which returns any data type
+
     public static <T> T convertJsonToJavaObject(String json, Class<T> cls){  // Generic method
-        T javaResult = null;
+        T javaResult = null;  // javaResult is the container which will carry the Java object that we are creating
         try {
             javaResult = mapper.readValue(json, cls);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Json could not be converted to Java Object" + e.getMessage());
         }
         return javaResult;
     }
 
     // Most probably this type of util classes will be given to you by your company
+
+
+    // 2nd: Serialisation Method
+    public static String convertJavaToJson(Object obj){
+        String jsonResult = null;
+        try {
+            jsonResult = mapper.writeValueAsString(obj);
+        } catch (IOException e) {
+            System.out.println("Java object could not be converted to Json " + e.getMessage());
+        }
+        return jsonResult;
+    }
+
 
 }
